@@ -4,4 +4,9 @@ for DIGEST in $DIGESTS; do
 done
 echo Manifest Digests removed: $DIGESTS
 
+if [ "$4" == "true" ]; then
+  echo "Skipping garbage collection"
+  exit 0
+fi
+echo "Triggering garbage collection"
 doctl registry garbage-collection start --include-untagged-manifests --force

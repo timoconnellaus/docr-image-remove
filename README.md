@@ -20,17 +20,21 @@ Add this step to a job to automatically delete older images as part of a job:
       uses: henrik242/docr-image-remove@v1
       with:
         image_repository: image-repository # required
-        buffer_size: 10
+        buffer_size: "10"
         exclude: ^(latest|tag1|tag2)$
+        skip_garbage_collection: "true" # optional - default is false
 ```
 
 # Inputs
 - `image_repository` - (**Required**) Image repository name in the Container Registry
 - `buffer_size` - (Optional) Number of recent images. Default is `10`
 - `exclude` - (Optional) Regex expression to exclude in the tags to delete.
+- `skip_garbage_collection` - (Optional) Skip garbage collection.
 
 # History
 Based on these efforts:
+
+- Forked from: https://github.com/henrik242/docr-image-remove/blob/main/action.yml
 
 - Initial work: https://github.com/ripplr-io/docr-image-remove
 - Digests instead of tags: https://github.com/martintomas/docr-image-remove
